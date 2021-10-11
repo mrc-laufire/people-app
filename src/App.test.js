@@ -1,13 +1,22 @@
-import { render, screen } from '@testing-library/react';
-
-import App from './App';
+import { React } from 'react';
+import { render } from '@testing-library/react';
 import context from './core/context';
+import * as Name from './components/name';
+import App from './App';
 
 describe('App', () => {
-	test('renders with a welcome message', () => {
-		render(App(context));
-		const someText = screen.getByText(context.config.message);
+	test('renders the app component', () => {
+		jest.spyOn(Name, 'default')
+			.mockImplementation(() => <div role="name"/>);
 
-		expect(someText).toBeInTheDocument();
+		const { getByRole } = render(App(context));
+		const appComponent = getByRole('app');
+		const nameComponent = getByRole('name');
+
+		expect(appComponent).toBeInTheDocument();
+		expect(appComponent).toHaveClass('app');
+		expect(appComponent).toHaveTextContent('Name');
+		expect(Name.default).toBeCalledWith(context);
+		expect(nameComponent).toBeInTheDocument();
 	});
 });
