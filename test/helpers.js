@@ -1,5 +1,5 @@
 /* eslint-disable max-lines-per-function */
-import { rndString } from '@laufire/utils/random';
+import { rndString, rndBetween } from '@laufire/utils/random';
 import { render, fireEvent } from '@testing-library/react';
 
 const TestHelpers = {
@@ -8,7 +8,18 @@ const TestHelpers = {
 
 		return rndString(idLength);
 	},
+	rndNumber: () => {
+		const min = 0;
+		const max = 1000;
+
+		return rndBetween(min, max);
+	},
 	testInput: ({ component, name, type, value }) => {
+		const values = {
+			text: TestHelpers.rndString(),
+			number: String(TestHelpers.rndNumber()),
+		};
+
 		describe(component, () => {
 			const context = {
 				state: {
@@ -18,7 +29,7 @@ const TestHelpers = {
 				},
 			};
 
-			context.state[name] = TestHelpers.rndString();
+			context.state[name] = values[type];
 
 			test('Renders the component', () => {
 				const rendered = render(component(context))
