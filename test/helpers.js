@@ -1,5 +1,5 @@
 /* eslint-disable max-lines-per-function */
-import { rndString, rndBetween } from '@laufire/utils/random';
+import { rndString, rndBetween, rndValue } from '@laufire/utils/random';
 import { render, fireEvent } from '@testing-library/react';
 
 const TestHelpers = {
@@ -14,6 +14,7 @@ const TestHelpers = {
 
 		return rndBetween(min, max);
 	},
+	rndGender: () => rndValue(['male', 'female']),
 	testInput: ({ component, name, type, value }) => {
 		const values = {
 			text: TestHelpers.rndString(),

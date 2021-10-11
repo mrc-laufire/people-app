@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import context from './core/context';
 import * as Name from './components/name';
 import * as Age from './components/age';
+import * as Gender from './components/gender';
 import App from './App';
 
 describe('App', () => {
@@ -10,6 +11,7 @@ describe('App', () => {
 		const data = [
 			{ lib: Name, role: 'name' },
 			{ lib: Age, role: 'age' },
+			{ lib: Gender, role: 'gender' },
 		];
 
 		data.map(({ lib, role }) => jest.spyOn(lib, 'default')
