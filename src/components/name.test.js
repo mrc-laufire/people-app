@@ -6,4 +6,5 @@ TestHelpers.testInput({
 	name: 'name',
 	type: 'text',
 	value: TestHelpers.rndString(),
+	prop: 'value',
 });

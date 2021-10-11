@@ -5,6 +5,7 @@ import * as Name from './components/name';
 import * as Age from './components/age';
 import * as Gender from './components/gender';
 import App from './App';
+import Married from './components/married';
 
 describe('App', () => {
 	test('renders the app component', () => {
@@ -12,6 +13,7 @@ describe('App', () => {
 			{ lib: Name, role: 'name' },
 			{ lib: Age, role: 'age' },
 			{ lib: Gender, role: 'gender' },
+			{ lib: Married, role: 'married' },
 		];
 
 		data.map(({ lib, role }) => jest.spyOn(lib, 'default')

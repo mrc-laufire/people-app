@@ -6,4 +6,5 @@ TestHelpers.testInput({
 	name: 'age',
 	type: 'number',
 	value: String(TestHelpers.rndNumber()),
+	prop: 'value',
 });
