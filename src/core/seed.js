@@ -3,6 +3,7 @@ const seed = {
 	age: '',
 	gender: 'male',
 	maritalStatus: 'Single',
+	people: [],
 };
 
 export default seed;
