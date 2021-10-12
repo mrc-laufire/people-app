@@ -8,18 +8,18 @@ import * as AddButton from './addButton';
 import InputForm from './input-form';
 
 const data = [
-	{ lib: Name, role: 'name' },
-	{ lib: Age, role: 'age' },
-	{ lib: Gender, role: 'gender' },
-	{ lib: MaritalStatus, role: 'marital-status' },
-	{ lib: AddButton, role: 'add-button' },
+	{ component: Name, role: 'name' },
+	{ component: Age, role: 'age' },
+	{ component: Gender, role: 'gender' },
+	{ component: MaritalStatus, role: 'marital-status' },
+	{ component: AddButton, role: 'add-button' },
 ];
 
 describe('inputForm', () => {
 	const context = Symbol('context');
 
 	test('Renders the components', () => {
-		data.map(({ lib, role }) => jest.spyOn(lib, 'default')
+		data.map(({ component, role }) => jest.spyOn(component, 'default')
 			.mockImplementation(() => <div role={ role }/>));
 
 		const { getByRole } = render(InputForm(context));
@@ -27,9 +27,10 @@ describe('inputForm', () => {
 
 		expect(component).toBeInTheDocument();
 		expect(component).toHaveClass('input-form');
-		expect(component).toHaveTextContent('Name');
-		data.map(({ lib, role }) => {
-			expect(lib.default).toBeCalledWith(context);
+		['Name', 'Age', 'Gender', 'Marital status'].map((val) =>
+			expect(component).toHaveTextContent(val));
+		data.map(({ component, role }) => {
+			expect(component.default).toBeCalledWith(context);
 			expect(getByRole(role)).toBeInTheDocument();
 		});
 	});

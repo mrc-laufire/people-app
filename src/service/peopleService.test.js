@@ -1,6 +1,6 @@
-import PeopleService from './peopleService';
 import TestHelpers from '../../test/helpers';
 import * as Random from '@laufire/utils/random';
+import PeopleService from './peopleService';
 
 describe('People service', () => {
 	const { rndString, rndNumber, rndGender, rndMaritalState } = TestHelpers;
@@ -15,7 +15,7 @@ describe('People service', () => {
 		},
 	};
 
-	test('udatePeople returns updated people', () => {
+	test('updatePeople returns updated people', () => {
 		const { name, age, gender, maritalStatus, people } = context.state;
 		const id = rndString();
 

@@ -8,11 +8,11 @@ import App from './App';
 describe('App', () => {
 	test('renders the app component', () => {
 		const data = [
-			{ lib: InputForm, role: 'input-form' },
-			{ lib: People, role: 'people' },
+			{ component: InputForm, role: 'input-form' },
+			{ component: People, role: 'people' },
 		];
 
-		data.map(({ lib, role }) => jest.spyOn(lib, 'default')
+		data.map(({ component, role }) => jest.spyOn(component, 'default')
 			.mockImplementation(() => <div role={ role }/>));
 
 		const { getByRole } = render(App(context));
@@ -20,8 +20,8 @@ describe('App', () => {
 
 		expect(appComponent).toBeInTheDocument();
 		expect(appComponent).toHaveClass('app');
-		data.map(({ lib, role }) => {
-			expect(lib.default).toBeCalledWith(context);
+		data.map(({ component, role }) => {
+			expect(component.default).toBeCalledWith(context);
 			expect(getByRole(role)).toBeInTheDocument();
 		});
 	});

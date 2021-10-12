@@ -22,6 +22,6 @@ describe('People', () => {
 		expect(component).toBeInTheDocument();
 		expect(component).toHaveClass('people');
 		expect(people.map).toHaveBeenCalledWith(Person);
-		expect(getByRole('people')).toBeInTheDocument();
+		expect(getByRole('person')).toBeInTheDocument();
 	});
 });
