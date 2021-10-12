@@ -1,7 +1,7 @@
 import { React } from 'react';
 
-const Person = ({ name, age, gender, maritalStatus }) =>
-	<div role="person" className="person">
+const Person = ({ id, name, age, gender, maritalStatus }) =>
+	<div key={ id }role="person" className="person">
 		<span> {name} </span>
 		<span> {age} </span>
 		<span> {gender} </span>
