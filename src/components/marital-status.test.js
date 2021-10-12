@@ -1,9 +1,9 @@
-import { rndValue } from '@laufire/utils/random';
+import TestHelpers from '../../test/helpers';
 import { render, fireEvent } from '@testing-library/react';
 import MaritalStatus from './marital-status';
 
 describe('MaritalStatus', () => {
-	const MaritalState = rndValue(['Single', 'Married']);
+	const MaritalState = TestHelpers.rndMaritalState();
 	const context = {
 		state: {
 			maritalStatus: MaritalState,
