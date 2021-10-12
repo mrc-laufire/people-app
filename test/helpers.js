@@ -14,7 +14,7 @@ const TestHelpers = {
 
 		return rndBetween(min, max);
 	},
-	rndGender: () => rndValue(['male', 'female']),
+	rndGender: () => rndValue(['Male', 'Female']),
 	rndMaritalState: () => rndValue(['Single', 'Married']),
 	testInput: ({ component, name, type, value }) => {
 		const values = {

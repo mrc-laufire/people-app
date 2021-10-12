@@ -25,7 +25,7 @@ describe('Gender', () => {
 	});
 
 	test('triggers action which patches the state', () => {
-		const [value] = ['male', 'female'].filter((val) => val !== gender);
+		const [value] = ['Male', 'Female'].filter((val) => val !== gender);
 
 		const component = render(Gender(context)).getByRole('gender');
 

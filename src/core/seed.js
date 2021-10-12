@@ -1,7 +1,7 @@
 const seed = {
 	name: '',
 	age: '',
-	gender: 'male',
+	gender: 'Male',
 	maritalStatus: 'Single',
 	people: [],
 };

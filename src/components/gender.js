@@ -11,7 +11,7 @@ const Gender = ({ state: { gender }, actions }) =>
 		onChange={ (evt) => actions
 			.patchState({ gender: evt.target.value }) }
 	>
-		{ ['male', 'female'].map(genderOptions) }
+		{ ['Male', 'Female'].map(genderOptions) }
 	</select>;
 
 export default Gender;
