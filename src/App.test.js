@@ -1,35 +1,19 @@
 import { React } from 'react';
 import { render } from '@testing-library/react';
 import context from './core/context';
-import * as Name from './components/name';
-import * as Age from './components/age';
-import * as Gender from './components/gender';
+import * as InputForm from './components/input-form';
 import App from './App';
-import * as MaritalStatus from './components/marital-status';
-import * as AddButton from './components/addButton';
 
 describe('App', () => {
 	test('renders the app component', () => {
-		const data = [
-			{ lib: Name, role: 'name' },
-			{ lib: Age, role: 'age' },
-			{ lib: Gender, role: 'gender' },
-			{ lib: MaritalStatus, role: 'marital-status' },
-			{ lib: AddButton, role: 'add-button' },
-		];
-
-		data.map(({ lib, role }) => jest.spyOn(lib, 'default')
-			.mockImplementation(() => <div role={ role }/>));
+		jest.spyOn(InputForm, 'default')
+			.mockImplementation(() => <div role="input-form"/>);
 
 		const { getByRole } = render(App(context));
 		const appComponent = getByRole('app');
 
 		expect(appComponent).toBeInTheDocument();
 		expect(appComponent).toHaveClass('app');
-		expect(appComponent).toHaveTextContent('Name');
-		data.map(({ lib, role }) => {
-			expect(lib.default).toBeCalledWith(context);
-			expect(getByRole(role)).toBeInTheDocument();
-		});
+		expect(InputForm.default).toHaveBeenCalledWith(context);
 	});
 });
