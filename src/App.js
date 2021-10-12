@@ -3,6 +3,7 @@ import './App.scss';
 import Age from './components/age';
 import Gender from './components/gender';
 import Name from './components/name';
+import MaritalStatus from './components/marital-status';
 import context from './core/context';
 
 const App = () =>
@@ -10,6 +11,7 @@ const App = () =>
 		<span> Name {Name(context)}</span>
 		<span> Age {Age(context)}</span>
 		<span> Gender {Gender(context)}</span>
+		<span> Marital status {MaritalStatus(context)}</span>
 	</div>;
 
 export default App;
