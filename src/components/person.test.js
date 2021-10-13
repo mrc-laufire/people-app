@@ -9,9 +9,10 @@ describe('Person', () => {
 	const gender = rndGender();
 	const maritalStatus = rndMaritalState();
 	const person = { name, age, gender, maritalStatus };
+	const context = { data: person };
 
 	test('renders the component', () => {
-		const component = render(Person(person)).getByRole('person');
+		const component = render(Person(context)).getByRole('person');
 
 		expect(component).toBeInTheDocument();
 		expect(component).toHaveClass('person');

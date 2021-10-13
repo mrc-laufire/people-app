@@ -1,9 +1,14 @@
 import { React } from 'react';
 import Person from './person';
 
-const People = ({ state: { people }}) =>
-	<div role="people" className="people">
-		{people.map(Person)}
-	</div>;
+const People = (context) => {
+	const { state: { people }} = context;
+
+	return (
+		<div role="people" className="people">
+			{people.map((person) => Person({ ...context, data: person }))}
+		</div>
+	);
+};
 
 export default People;
