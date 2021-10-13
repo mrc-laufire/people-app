@@ -11,7 +11,7 @@ const data = [
 	{ component: Name, role: 'name' },
 	{ component: Age, role: 'age' },
 	{ component: Gender, role: 'gender' },
-	{ component: MaritalStatus, role: 'marital-status' },
+	{ component: MaritalStatus, role: 'maritalStatus' },
 	{ component: AddButton, role: 'add-button' },
 ];
 
@@ -23,12 +23,12 @@ describe('inputForm', () => {
 			.mockImplementation(() => <div role={ role }/>));
 
 		const { getByRole } = render(InputForm(context));
-		const component = getByRole('input-form');
+		const rendered = getByRole('input-form');
 
-		expect(component).toBeInTheDocument();
-		expect(component).toHaveClass('input-form');
+		expect(rendered).toBeInTheDocument();
+		expect(rendered).toHaveClass('input-form');
 		['Name', 'Age', 'Gender', 'Marital status'].map((val) =>
-			expect(component).toHaveTextContent(val));
+			expect(rendered).toHaveTextContent(val));
 		data.map(({ component, role }) => {
 			expect(component.default).toBeCalledWith(context);
 			expect(getByRole(role)).toBeInTheDocument();

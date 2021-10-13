@@ -7,8 +7,8 @@ const maritalOptions = (maritalOption) =>
 
 const MaritalStatus = ({ state: { maritalStatus }, actions }) =>
 	<select
-		role="marital-status"
-		className="marital-status"
+		role="maritalStatus"
+		className="maritalStatus"
 		value={ maritalStatus }
 		onChange={ (evt) => actions
 			.patchState({ maritalStatus: evt.target.value }) }

@@ -54,6 +54,45 @@ const TestHelpers = {
 			});
 		});
 	},
+	testSelect: ({ component, name, selectables }) => {
+		describe(name, () => {
+			const values = {
+				gender: TestHelpers.rndGender(),
+				maritalStatus: TestHelpers.rndMaritalState(),
+			};
+			const context = {
+				state: {
+				},
+				actions: {
+					patchState: jest.fn(),
+				},
+			};
+
+			context.state[name] = values[name];
+
+			test('Renders the component', () => {
+				const { getByRole, getAllByRole } = render(component(context));
+				const rendered = getByRole(name);
+				const options = getAllByRole('option');
+
+				expect(rendered).toBeInTheDocument();
+				expect(rendered).toHaveClass(name);
+				expect(rendered.value).toEqual(context.state[name]);
+				options.map((option) => expect(option).toBeInTheDocument());
+			});
+
+			test('triggers action which patches the state', () => {
+				const [value] = selectables.filter((val) => val !== name);
+
+				const rendered = render(component(context)).getByRole(name);
+
+				fireEvent.change(rendered, { target: { value }});
+
+				expect(context.actions.patchState)
+					.toHaveBeenCalledWith({ [name]: value });
+			});
+		});
+	},
 };
 
 export default TestHelpers;
