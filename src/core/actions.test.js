@@ -19,4 +19,12 @@ describe('actions', () => {
 		expect(result).toEqual(data);
 		expect(PeopleService.updatePeople).toHaveBeenCalledWith(data);
 	});
+	test('resetInput', () => {
+		const seed = { data: Symbol('data') };
+		const state = { people: Symbol('people') };
+
+		const result = actions.resetInputs({ seed, state });
+
+		expect(result).toEqual({ ...seed, people: state.people });
+	});
 });

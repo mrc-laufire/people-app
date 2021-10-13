@@ -5,7 +5,6 @@ import PeopleService from './peopleService';
 describe('People service', () => {
 	const { rndString, rndNumber, rndGender, rndMaritalState } = TestHelpers;
 	const context = {
-		seed: { data: Symbol('data') },
 		state: {
 			name: rndString(),
 			age: rndNumber(),
@@ -24,7 +23,6 @@ describe('People service', () => {
 		const result = PeopleService.updatePeople(context);
 
 		expect(result).toEqual({
-			...context.seed,
 			people: people.concat({ id, name, age, gender, maritalStatus }),
 		});
 	});

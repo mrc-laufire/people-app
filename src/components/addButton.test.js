@@ -5,6 +5,7 @@ describe('AddButton', () => {
 	const context = {
 		actions: {
 			updatePeople: jest.fn(),
+			resetInputs: jest.fn(),
 		},
 	};
 
@@ -23,5 +24,6 @@ describe('AddButton', () => {
 		fireEvent.click(component);
 
 		expect(context.actions.updatePeople).toHaveBeenCalledWith();
+		expect(context.actions.resetInputs).toHaveBeenCalledWith();
 	});
 });
